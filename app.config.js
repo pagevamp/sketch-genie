@@ -2,18 +2,18 @@ const IS_PROD = process.env.EXPO_PUBLIC_APP_ENV === "production";
 
 const environmentConfig = {
   production: {
-    name: "Starter Kit",
-    slug: "starter-kit",
-    scheme: "starter-kit",
-    bundleIdentifier: "io.outside.starterkit",
-    package: "io.outside.starterkit",
+    name: "Sketch Genie",
+    slug: "sketch-genie",
+    scheme: "sketch-genie",
+    bundleIdentifier: "io.outside.sketchGenie",
+    package: "io.outside.sketchGenie",
   },
   development: {
-    name: "StarterKitDev",
-    slug: "starter-kit-dev",
-    scheme: "starter-kit-dev",
-    bundleIdentifier: "io.outside.starterkit.dev",
-    package: "io.outside.starterkit.dev",
+    name: "Sketch Genie",
+    slug: "sketch-genie-dev",
+    scheme: "sketch-genie-dev",
+    bundleIdentifier: "io.outside.sketchGenie.dev",
+    package: "io.outside.sketchGenie.dev",
   },
 };
 
@@ -37,14 +37,9 @@ export default ({ config }) => {
       bundleIdentifier: envConfig.bundleIdentifier,
       buildNumber,
       splash: {
-        image: "./src/assets/images/splash-light.png",
+        image: "./src/assets/images/splash.png",
         resizeMode: "contain",
         backgroundColor: "#9F5F45",
-        dark: {
-          image: "./src/assets/images/splash-dark.png",
-          resizeMode: "contain",
-          backgroundColor: "#252525",
-        },
       },
       privacyManifests: {
         NSPrivacyCollectedDataTypes: [
@@ -97,11 +92,11 @@ export default ({ config }) => {
         backgroundColor: "#252525",
       },
       splash: {
-        image: "./src/assets/images/splash-light.png",
+        image: "./src/assets/images/splash.png",
         resizeMode: "contain",
         backgroundColor: "#9F5F45",
         dark: {
-          image: "./src/assets/images/splash-dark.png",
+          image: "./src/assets/images/splash.png",
           resizeMode: "contain",
           backgroundColor: "#252525",
         },

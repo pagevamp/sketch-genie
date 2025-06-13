@@ -30,13 +30,15 @@ export const CustomTheme = {
     buttonPrimaryText: Colors.neutral100,
     buttonSecondary: Colors.secondary300,
     buttonSecondaryText: Colors.neutral100,
+    buttonDisabled: Colors.neutral300,
+    buttonDisabledText: Colors.neutral600,
 
     // Card colors
     cardBackground: Colors.neutral200,
     cardBorder: Colors.neutral400,
 
     // Status colors
-    success: Colors.accent400,
+    success: Colors.success500,
     warning: Colors.accent500,
     error: Colors.angry500,
     info: Colors.secondary400,
@@ -46,15 +48,15 @@ export const CustomTheme = {
     overlay50: Colors.overlay50,
 
     // Border colors
-    border: Colors.neutral400,
-    borderSecondary: Colors.neutral300,
+    border: Colors.neutral300,
+    borderSecondary: Colors.neutral400,
 
     // Shadow colors
-    shadow: Colors.neutral600,
+    shadow: Colors.neutral700,
   },
   dark: {
     // Base colors
-    background: Colors.neutral800,
+    background: Colors.neutral700,
     backgroundSecondary: Colors.neutral700,
     textPrimary: Colors.neutral100,
     textSecondary: Colors.neutral400,
@@ -74,13 +76,15 @@ export const CustomTheme = {
     buttonPrimaryText: Colors.neutral100,
     buttonSecondary: Colors.secondary400,
     buttonSecondaryText: Colors.neutral100,
+    buttonDisabled: Colors.neutral300,
+    buttonDisabledText: Colors.neutral800,
 
     // Card colors
     cardBackground: Colors.neutral700,
     cardBorder: Colors.neutral600,
 
     // Status colors
-    success: Colors.accent400,
+    success: Colors.success500,
     warning: Colors.accent500,
     error: Colors.angry500,
     info: Colors.secondary400,
@@ -90,7 +94,7 @@ export const CustomTheme = {
     overlay50: Colors.overlay50,
 
     // Border colors
-    border: Colors.neutral600,
+    border: Colors.neutral500,
     borderSecondary: Colors.neutral500,
 
     // Shadow colors

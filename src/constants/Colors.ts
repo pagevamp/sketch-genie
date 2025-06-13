@@ -9,6 +9,8 @@ export const Colors = {
   neutral800: "#252525",
   neutral900: "#000000",
 
+  background: "#FCF9F5",
+
   primary100: "#F8EAE4",
   primary200: "#FFDBCC",
   primary300: "#DDA28E",
@@ -29,7 +31,9 @@ export const Colors = {
   accent500: "#FFBB50",
 
   angry100: "#F2D6CD",
-  angry500: "#C03403",
+  angry500: "#ff6b6b",
+
+  success500: "#4CAF50",
 
   overlay20: "rgba(25, 16, 21, 0.2)",
   overlay50: "rgba(25, 16, 21, 0.5)",

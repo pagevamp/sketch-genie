@@ -1,34 +1,22 @@
-import { View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "@rneui/themed";
 
-import { Typography, FormButton, TextType } from "@io/components";
-import { CommonStyles, vs } from "@io/constants";
-import { useAuthStore } from "@io/store";
+import { SketchCanvasComponent } from "@io/components";
+import { CommonStyles } from "@io/constants";
 
 const LoginScreen = () => {
   const { theme } = useTheme();
-  const setLoggedIn = useAuthStore(state => state.setLoggedIn);
 
-  const insets = useSafeAreaInsets();
-
-  const handleLogin = () => {
-    setLoggedIn(true);
+  const handleSave = (base64Image: string) => {
+    // Handle the saved image (base64 string)
+    console.log("Image saved!");
+    // You can save it to AsyncStorage, upload to a server, etc.
   };
 
   return (
-    <View
-      style={[
-        CommonStyles.flexRoot,
-        CommonStyles.paddingHorizontal24,
-        { backgroundColor: theme.colors.background, paddingBottom: insets.bottom ?? vs.pd24 },
-      ]}>
-      <View style={CommonStyles.flexContainer}>
-        <Typography text="Login Screen" type={TextType.HEADING} />
-      </View>
-
-      <FormButton title="Login" onPress={handleLogin} />
-    </View>
+    <SafeAreaView style={[CommonStyles.flexRoot, { backgroundColor: theme.colors.background }]}>
+      <SketchCanvasComponent onSave={handleSave} />
+    </SafeAreaView>
   );
 };
 

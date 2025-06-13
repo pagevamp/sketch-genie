@@ -20,6 +20,8 @@ declare module "@rneui/themed" {
     buttonPrimaryText: string;
     buttonSecondary: string;
     buttonSecondaryText: string;
+    buttonDisabled: string;
+    buttonDisabledText: string;
     errorText: string;
     disabledText: string;
     overlay20: string;
