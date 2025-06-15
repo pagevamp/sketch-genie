@@ -56,7 +56,7 @@ const RootLayout = () => {
             headerShown: false,
           }}>
           <Stack.Screen name="index" options={{ animation: "slide_from_left" }} />
-          <Stack.Screen name="design" options={{ animation: "slide_from_left" }} />
+          <Stack.Screen name="design" options={{ animation: "slide_from_right" }} />
           <Stack.Screen name="preview" options={{ animation: "slide_from_right" }} />
         </Stack>
       </QueryClientProvider>
