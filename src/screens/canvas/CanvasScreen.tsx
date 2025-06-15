@@ -1,16 +1,24 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "@rneui/themed";
+import { useRouter } from "expo-router";
 
 import { SketchCanvasComponent } from "@io/components";
 import { CommonStyles } from "@io/constants";
 
-const LoginScreen = () => {
+type PreviewScreenParams = {
+  imageData: string;
+};
+
+const CanvasScreen = () => {
+  const router = useRouter();
   const { theme } = useTheme();
 
-  const handleSave = (base64Image: string) => {
-    // Handle the saved image (base64 string)
-    console.log("Image saved!");
-    // You can save it to AsyncStorage, upload to a server, etc.
+  const handleSave = (path: string) => {
+    const params: PreviewScreenParams = { imageData: path };
+    router.push({
+      pathname: "/preview",
+      params: params,
+    });
   };
 
   return (
@@ -20,4 +28,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default CanvasScreen;

@@ -9,7 +9,7 @@ import { generateColorVariations } from "@io/utils";
 import { BASE_COLORS } from "./BaseColors";
 
 interface SketchCanvasProps {
-  onSave?: (base64: string) => void;
+  onSave: (path: string) => void;
 }
 
 export const SketchCanvasComponent: React.FC<SketchCanvasProps> = ({ onSave }) => {
@@ -41,10 +41,20 @@ export const SketchCanvasComponent: React.FC<SketchCanvasProps> = ({ onSave }) =
   };
 
   const saveDrawing = () => {
-    if (onSave) {
-      sketchRef.current?.getBase64("png", false, true, false, (base64: string) => {
-        onSave(base64);
-      });
+    const filename = `sketch-${Date.now()}`;
+    sketchRef.current?.save(
+      "png", // imageType
+      true, // transparent
+      "SketchGenie", // folder
+      filename, // filename
+      true, // includeImage
+      true // cropToImageSize
+    );
+  };
+
+  const handleSaveSketch = (success: boolean, path: string) => {
+    if (success && path) {
+      onSave(path);
     }
   };
 
@@ -88,6 +98,7 @@ export const SketchCanvasComponent: React.FC<SketchCanvasProps> = ({ onSave }) =
           style={CommonStyles.flexRoot}
           strokeColor={selectedColor}
           strokeWidth={strokeWidth}
+          onSketchSaved={handleSaveSketch}
         />
       </View>
 
@@ -240,7 +251,7 @@ const useStyles = makeStyles(theme => ({
     outlineColor: theme.colors.borderSecondary,
   },
   actionButton: {
-    padding: vs.pd8,
+    padding: vs.pd4,
     paddingHorizontal: vs.pd12,
     borderRadius: hs.r4,
     backgroundColor: theme.colors.buttonDisabled,

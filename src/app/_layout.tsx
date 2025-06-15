@@ -10,7 +10,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useColorScheme } from "@io/hooks";
 import { AppFonts, CustomTheme } from "@io/constants";
 import { sentryConfig } from "@io/config";
-import { AuthProvider } from "@io/services/providers";
 
 /*
   Initialize Sentry after setting up sentry project
@@ -50,20 +49,18 @@ const RootLayout = () => {
   }
 
   return (
-    <AuthProvider>
-      <ThemeProvider theme={IOTheme}>
-        <QueryClientProvider client={queryClient}>
-          <Stack
-            screenOptions={{
-              headerShown: false,
-            }}>
-            <Stack.Screen name="(auth)" options={{ animation: "slide_from_left" }} />
+    <ThemeProvider theme={IOTheme}>
+      <QueryClientProvider client={queryClient}>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <Stack.Screen name="index" options={{ animation: "slide_from_left" }} />
 
-            <Stack.Screen name="(tabs)" />
-          </Stack>
-        </QueryClientProvider>
-      </ThemeProvider>
-    </AuthProvider>
+          <Stack.Screen name="preview" options={{ animation: "slide_from_right" }} />
+        </Stack>
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 };
 

@@ -1,4 +1,2 @@
-export * from "./dashboard";
-export * from "./events";
-export * from "./login";
-export * from "./teams";
+export * from "./canvas";
+export * from "./preview";
