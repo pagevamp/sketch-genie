@@ -37,7 +37,6 @@ const CanvasScreen = () => {
       - Ensure proper React Native syntax and valid component hierarchy
       - The JSX string must be properly escaped for use in a JSON response
       - Use TouchableOpacity or Pressable for button component
-      - Replace single quotes around string attributes with double quotes
       
       EXAMPLE RESPONSE FORMAT:
       {

@@ -97,42 +97,7 @@ export const JsxParser = (input: any): string => {
     return match;
   });
 
-  // Fix unclosed tags
-  const openTags: string[] = [];
-  const tagRegex = /<\/?([A-Za-z][A-Za-z0-9]*)(?:\s+[^>]*)?>/g;
-  let lastIndex = 0;
-  let result = "";
-  let match;
-
-  while ((match = tagRegex.exec(jsx)) !== null) {
-    const [fullMatch, tag] = match;
-    const isClosing = fullMatch.startsWith("</");
-
-    result += jsx.slice(lastIndex, match.index);
-    lastIndex = match.index + fullMatch.length;
-
-    if (isClosing) {
-      if (openTags[openTags.length - 1] === tag) {
-        openTags.pop();
-      }
-      result += fullMatch;
-    } else if (fullMatch.endsWith("/>")) {
-      result += fullMatch;
-    } else {
-      openTags.push(tag);
-      result += fullMatch;
-    }
-  }
-
-  // Add any unclosed tags
-  while (openTags.length > 0) {
-    const tag = openTags.pop();
-    result += `</${tag}>`;
-  }
-
-  jsx = result + jsx.slice(lastIndex);
-
-  fixUnmatchedTags(jsx);
+  jsx = fixUnmatchedTags(jsx);
 
   // Final cleanup - only clean up actual concatenation artifacts
   return jsx
