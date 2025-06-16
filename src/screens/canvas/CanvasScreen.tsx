@@ -25,6 +25,7 @@ const CanvasScreen = () => {
       - All quotes in the JSX must be properly escaped
       - DO NOT include any explanations, comments, or extra fields
       - All components must be syntactically valid React Native elements
+      - Check if the structure is properly nested
       
       STYLING:
       - Use ONLY inline styles (no StyleSheet.create)
@@ -48,7 +49,7 @@ const CanvasScreen = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "llava:7b",
+          model: "llava:13b",
           prompt,
           stream: false,
         }),
@@ -64,10 +65,6 @@ const CanvasScreen = () => {
       if (!jsx) {
         throw new Error("Could not extract JSX from the response");
       }
-
-      console.log("Response Data:", data);
-
-      console.log("Final JSX:", jsx);
 
       router.push({
         pathname: "/design",
