@@ -31,9 +31,11 @@ import {
 import { useLocalSearchParams } from "expo-router";
 import { transform } from "@babel/standalone";
 import { CommonStyles } from "@io/constants";
+import { useTheme } from "@rneui/themed";
 
 const DesignScreen = () => {
   const { jsx } = useLocalSearchParams<{ jsx: string }>();
+  const { theme } = useTheme();
 
   const RenderedComponent = useMemo(() => {
     if (!jsx) return null;
@@ -126,7 +128,7 @@ const DesignScreen = () => {
     } catch (error) {
       console.error("Error creating component:", error);
       return () => (
-        <View style={CommonStyles.flexContainer}>
+        <View style={[CommonStyles.flexContainer, { backgroundColor: theme.colors.background }]}>
           <Text>Error creating component</Text>
         </View>
       );
@@ -135,17 +137,20 @@ const DesignScreen = () => {
 
   if (!jsx) {
     return (
-      <View style={CommonStyles.flexContainer}>
+      <View style={[CommonStyles.flexContainer, { backgroundColor: theme.colors.background }]}>
         <Text>No component to render</Text>
       </View>
     );
   }
 
   return (
-    <SafeAreaView style={CommonStyles.flexRoot}>
+    <SafeAreaView style={[CommonStyles.flexRoot, { backgroundColor: theme.colors.background }]}>
       <StatusBar barStyle="dark-content" />
       <ScrollView
-        contentContainerStyle={CommonStyles.flexGrowRoot}
+        contentContainerStyle={[
+          CommonStyles.flexGrowRoot,
+          { backgroundColor: theme.colors.background },
+        ]}
         keyboardShouldPersistTaps="handled"
         bounces={false}>
         {RenderedComponent && <RenderedComponent />}
