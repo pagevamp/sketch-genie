@@ -26,14 +26,33 @@ https://github.com/user-attachments/assets/10991144-a0de-4d9f-bf45-bf102547b487
 
 ```bash
 # Clone the repository
-git clone [https://github.com/pagevamp/sketch-genie](https://github.com/pagevamp/sketch-genie)
+git clone https://github.com/pagevamp/sketch-genie.git
 cd sketch-genie
 
 # Install dependencies
 yarn
+
+# Generate native directories
+npx expo prebuild
 
 # Start the development server
 npx expo run:ios
 #or
 npx expo run:android
 ```
+
+## Server Setup
+
+### Ollama llava model
+
+```bash
+brew install ollama
+
+# Download llava model
+ollama pull llava
+
+# Run ollama server
+ollama serve
+```
+
+> Use local endpoint from ollama in the project
