@@ -1,7 +1,36 @@
 import React, { useMemo } from "react";
-import { View, Text, TextInput, Button } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  TouchableHighlight,
+  TouchableWithoutFeedback,
+  TouchableNativeFeedback,
+  ActivityIndicator,
+  FlatList,
+  SectionList,
+  ImageBackground,
+  KeyboardAvoidingView,
+  Modal,
+  RefreshControl,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Switch,
+  TextInput as RNTextInput,
+  VirtualizedList,
+  DrawerLayoutAndroid,
+  Pressable,
+  Animated,
+  Easing,
+} from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { transform } from "@babel/standalone";
+import { CommonStyles } from "@io/constants";
 
 const DesignScreen = () => {
   const { jsx } = useLocalSearchParams<{ jsx: string }>();
@@ -19,37 +48,110 @@ const DesignScreen = () => {
       // Create a function that returns the JSX
       const createElement = new Function(
         "React",
+        // Core components
         "View",
         "Text",
         "TextInput",
         "Button",
+        "ScrollView",
+        "Image",
+        "TouchableOpacity",
+        "TouchableHighlight",
+        "TouchableWithoutFeedback",
+        "TouchableNativeFeedback",
+        "ActivityIndicator",
+        "FlatList",
+        "SectionList",
+        "ImageBackground",
+        "KeyboardAvoidingView",
+        "Modal",
+        "RefreshControl",
+        "SafeAreaView",
+        "StatusBar",
+        "StyleSheet",
+        "Switch",
+        "RNTextInput",
+        "VirtualizedList",
+        "DrawerLayoutAndroid",
+        "Pressable",
+        "Animated",
+        "Easing",
+        // Return the component
         `return ${code}`
       );
 
       // Return the component
       return () => {
         try {
-          return createElement(React, View, Text, TextInput, Button);
+          return createElement(
+            React,
+            // Pass all components in the same order
+            View,
+            Text,
+            TextInput,
+            Button,
+            ScrollView,
+            Image,
+            TouchableOpacity,
+            TouchableHighlight,
+            TouchableWithoutFeedback,
+            TouchableNativeFeedback,
+            ActivityIndicator,
+            FlatList,
+            SectionList,
+            ImageBackground,
+            KeyboardAvoidingView,
+            Modal,
+            RefreshControl,
+            SafeAreaView,
+            StatusBar,
+            StyleSheet,
+            Switch,
+            RNTextInput,
+            VirtualizedList,
+            DrawerLayoutAndroid,
+            Pressable,
+            Animated,
+            Easing
+          );
         } catch (e) {
           console.error("Error rendering component:", e);
-          return <Text>Error rendering component</Text>;
+          return (
+            <View style={CommonStyles.flexContainer}>
+              <Text>Error rendering component</Text>
+            </View>
+          );
         }
       };
     } catch (error) {
       console.error("Error creating component:", error);
-      return () => <Text>Error creating component</Text>;
+      return () => (
+        <View style={CommonStyles.flexContainer}>
+          <Text>Error creating component</Text>
+        </View>
+      );
     }
   }, [jsx]);
 
   if (!jsx) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={CommonStyles.flexContainer}>
         <Text>No component to render</Text>
       </View>
     );
   }
 
-  return <View style={{ flex: 1, padding: 16 }}>{RenderedComponent && <RenderedComponent />}</View>;
+  return (
+    <SafeAreaView style={CommonStyles.flexRoot}>
+      <StatusBar barStyle="dark-content" />
+      <ScrollView
+        contentContainerStyle={CommonStyles.flexGrowRoot}
+        keyboardShouldPersistTaps="handled"
+        bounces={false}>
+        {RenderedComponent && <RenderedComponent />}
+      </ScrollView>
+    </SafeAreaView>
+  );
 };
 
 export default DesignScreen;
