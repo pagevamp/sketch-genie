@@ -1,6 +1,6 @@
 const fixUnmatchedTags = (jsx: string): string => {
   const stack: string[] = [];
-  const tagRegex = /<\/?([a-z][a-z0-9]*)(?:\s+[^>]*)?>/gi;
+  const tagRegex = /<\/?([A-Za-z][A-Za-z0-9]*)(?:\s[^>]*)?>/g;
   let lastIndex = 0;
   let result = "";
   let match;
@@ -45,7 +45,7 @@ export const JsxParser = (input: any): string => {
       jsx = input.jsx;
     } else if (input.response) {
       const cleanText = input.response.replace(/\\/g, "");
-      const jsxMatch = cleanText.match(/<[a-zA-Z][\s\S]*?<\/[a-zA-Z]+>/);
+      const jsxMatch = cleanText.match(/<[\s\S]*>/);
       jsx = jsxMatch ? jsxMatch[0] : cleanText;
     } else if (input.choices?.[0]?.message?.content) {
       jsx = input.choices[0].message.content;
